@@ -1,0 +1,3 @@
+---
+- name: Install global node modules
+  shell: sudo -iu {{ deploy_user }} npm install -g bower grunt-cli gulp-cli http-server react-tools webpack babel-cli lebab phantomjs-prebuilt casperjs

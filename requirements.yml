@@ -1,0 +1,21 @@
+---
+- src: https://github.com/ANXS/scala          # contains fixed sbt download link
+  name: ANXS.scala
+
+- src: https://github.com/shirish87/ansible-golang  # removed extra dependencies
+  version: develop
+  name: azavea.golang
+
+- src: https://github.com/shirish87/Stouts.grafana  # install from source
+  version: develop
+  name: Stouts.grafana
+
+- src: Stouts.apt
+- src: Stouts.nginx
+- src: Stouts.redis
+- src: Stouts.supervisor
+- src: ANXS.oracle-jdk
+- src: ANXS.postgresql
+# - src: Stouts.users
+# - src: rossmcdonald.influxdb
+

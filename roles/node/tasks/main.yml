@@ -1,0 +1,17 @@
+---
+- name: install nvm
+  git: repo=https://github.com/creationix/nvm.git dest="{{ deploy_home }}/.nvm"
+
+- name: Set nvm ownership
+  file: path="{{ deploy_home }}/.nvm" owner={{ deploy_user }} group={{ deploy_group }} recurse=yes
+
+- name: Source nvm in ~/.profile
+  lineinfile:
+    dest="{{ deploy_home }}/.profile"
+    line="source {{ deploy_home }}/.nvm/nvm.sh"
+
+- name: Install node.js v{{ node_version }}
+  command: sudo -iu {{ deploy_user }} nvm install {{ node_version }}
+
+- name: Set default node version to v{{ node_version }}
+  command: sudo -iu {{ deploy_user }} nvm alias default {{ node_version }}

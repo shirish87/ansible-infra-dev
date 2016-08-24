@@ -1,0 +1,28 @@
+---
+- name: Ensure required packages are installed
+  apt: name={{ item }} state=latest update_cache=false
+  with_items:
+    - sendmail
+    - mailutils
+    - sendmail-bin
+
+- name: Create Gmail authentication file
+  file: state=directory path=/etc/mail/authinfo mode=0750
+
+- name: Copy gmail-auth
+  copy: src=gmail-auth dest="/etc/mail/authinfo/gmail-auth" owner=root mode=0600
+
+- name: Hash Google Mail authorization file
+  shell: makemap hash gmail-auth < gmail-auth chdir=/etc/mail/authinfo
+
+- name: Create sendmail.mc
+  copy: src=gmail-sendmail.mc dest=/etc/mail/sendmail.mc
+
+- name: Rebuild sendmail configuration
+  shell: make -C /etc/mail
+
+- name: Reload sendmail configuration
+  service: name=sendmail state=reloaded
+
+- name: Test mail
+  shell: echo "Test mail from sendmail" | /usr/sbin/sendmail {{ test_mail_to }}

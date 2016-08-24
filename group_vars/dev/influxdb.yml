@@ -1,0 +1,5 @@
+---
+# Channel of InfluxDB to install (stable, unstable, nightly)
+influxdb_install_version: stable
+influxdb_cluster_servers: no
+influxdb_http_auth_enabled: "true"

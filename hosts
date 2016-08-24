@@ -1,0 +1,2 @@
+[dev]
+gcp ansible_ssh_host=host.example.com ansible_ssh_user=deploy

@@ -1,0 +1,6 @@
+---
+golang_version: 1.7                      # Go version
+golang_os: linux                         # Go operating system build
+golang_arch: amd64                       # Go architecture build
+golang_path: "/opt/golang"               # Default `GOPATH`
+golang_user: "deploy"
